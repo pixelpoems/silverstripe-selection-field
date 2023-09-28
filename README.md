@@ -6,7 +6,6 @@ This module provides a selection field wich is based on [color palate field by h
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Usage in Frontend](#usage-in-frontend)
 * [Reporting Issues](#reporting-issues)
 * [Credits](#credits)
 
@@ -82,9 +81,6 @@ You can define an alternative box content when you define "Content" within Optio
     'Content' => 'M'
 ],
 ```
-
-## Usage in Frontend
-TODO
 
 ## Reporting Issues
 Please [create an issue](https://github.com/pixelpoems/silverstripe-selection-field/issues) for any bugs you've found, or
