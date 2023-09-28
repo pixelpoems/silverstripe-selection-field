@@ -1,0 +1,59 @@
+// SELECTION FIELD
+// Based on: https://github.com/heyday/silverstripe-colorpalette/blob/main/css/ColorPaletteField.css
+ul.selection-field {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    li {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+
+        input {
+            display: none;
+        }
+
+        &.val label, label.no-icon {
+            // "Empty String"
+            outline: 1px solid #fff;
+            border: 1px solid #999;
+        }
+
+        label {
+            cursor: pointer;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            color: #000;
+            display: flex;
+
+            svg {
+                margin: auto;
+                height: 90%;
+                width: 90%;
+            }
+        }
+
+        span {
+            margin: auto
+        }
+
+        input:checked + label {
+            outline: 5px solid #ddd;
+            position: relative;
+        }
+
+        input:checked + label:after {
+            text-shadow: -1px -1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px 1px 0 #fff,
+            1px 1px 0 #fff;
+        }
+    }
+}
