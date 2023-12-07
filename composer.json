@@ -19,7 +19,7 @@
         "php": ">=7.4",
         "silverstripe/cms": ">=4",
         "silverstripe/framework": ">=4",
-        "silverstripe/vendor-plugin": ">=2",
+        "silverstripe/vendor-plugin": ">=1",
         "heyday/silverstripe-colorpalette": "^2.1.0"
     },
     "require-dev": {
