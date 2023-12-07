@@ -72,15 +72,37 @@ To display Icons you need to reference Feather Icons:
 https://github.com/feathericons/feather/tree/main/icons
 
 If no Icon is defined within the array, the box will display the title!
-You can define an alternative box content when you define "Content" within Options:
+You can define an alternative box content when you define "Content" within Options. Furthermore you can define an image link:
 ```php
 'medium' => [
     'Value' => 'medium',
     'Title' => _t('LayoutOptions.Medium', 'Medium'),
     'ShowTitle' => true,
-    'Content' => 'M'
+    'Content' => 'M',
+    'ImgLink' => '/assets/medium.png'
 ],
 ```
+If you defined an icon and an image link, the image link will be ignored. Based on hierarchy the icon will be displayed first, then the image link and then the content - if nothing is defined, the title will be displayed.
+
+If you use ImgLink, you can let the user upload the images to a predefined folder. You can use the `Icon Selection Service`,
+which comes with this module, to provide the images to the user. You can use the following code to provide the images:
+```php
+private static array $db = [
+    'IconID' => 'Varchar'
+];
+
+public function getCMSFields()
+{
+    $fields = parent::getCMSFields();
+
+    $fields->addFieldsToTab('Root.Main', [
+        SelectionField::create('Icon', 'Icon', IconSelectionService::getIconOptions())
+    ]);
+
+    return $fields;
+}
+```
+
 
 ## Reporting Issues
 Please [create an issue](https://github.com/pixelpoems/silverstripe-selection-field/issues) for any bugs you've found, or

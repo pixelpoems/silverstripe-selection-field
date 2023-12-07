@@ -59,10 +59,10 @@ use SilverStripe\View\Requirements;
  *     'Content' => 'M'
  * ],
  * </code>
-*/
+ */
 class SelectionField extends SingleSelectField
 {
-    protected function getFieldOption($value, $title, $odd, $showTitle, $icon = null, $content = null)
+    protected function getFieldOption($value, $title, $odd, $showTitle, $icon = null, $content = null, $imgLink = null)
     {
         return new ArrayData([
             'ID' => $this->getOptionID($value),
@@ -74,6 +74,7 @@ class SelectionField extends SingleSelectField
             'ShowTitle' => $showTitle,
             'Icon' => $icon,
             'Content' => $content,
+            'ImgLink' => $imgLink,
             'isChecked' => $this->isSelectedValue($value, $this->Value()),
             'isDisabled' => $this->isDisabledValue($value)
         ]);
@@ -127,8 +128,9 @@ class SelectionField extends SingleSelectField
             $odd = !$odd;
             $icon = $item['Icon'] ?? null;
             $content = $item['Content'] ?? null;
+            $imgLink = $item['ImgLink'] ?? null;
             $showTitle = $item['ShowTitle'] ?? false;
-            $options[] = $this->getFieldOption($item['Value'], $item['Title'], $odd, $showTitle, $icon, $content);
+            $options[] = $this->getFieldOption($item['Value'], $item['Title'], $odd, $showTitle, $icon, $content, $imgLink);
         }
 
         $properties = array_merge($properties, [
