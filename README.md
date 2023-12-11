@@ -96,7 +96,7 @@ public function getCMSFields()
     $fields = parent::getCMSFields();
 
     $fields->addFieldsToTab('Root.Main', [
-        SelectionField::create('Icon', 'Icon', IconSelectionService::getIconOptions())
+        SelectionField::create('IconID', 'Icon', IconSelectionService::getIconOptions())
     ]);
 
     return $fields;
