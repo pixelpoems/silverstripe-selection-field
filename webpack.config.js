@@ -15,12 +15,18 @@ module.exports = {
     entry: {
         "selection-field": [
             PATHS.SRC + '/scss/selection-field.scss',
-            PATHS.SRC + '/javascript/selection-field.js'
+            // PATHS.SRC + '/javascript/selection-field.js'
         ]
     },
     output: {
         filename: 'javascript/[name].min.js',
         path: PATHS.DIST,
+        chunkFilename: 'javascript/[name].js',
+        assetModuleFilename:  (pathData) => {
+            // Add path to name if it's a flag-icon to avoid "Multiple assets emit to the same filename" error
+            if(pathData.filename.startsWith('node_modules/@fortawesome/fontawesome-free/webfonts/')) return 'fonts/[name][ext]';
+            return '[name][ext]';
+        },
     },
     plugins: [
         new MiniCssExtractPlugin({
@@ -85,7 +91,11 @@ module.exports = {
                         ],
                     }
                 }
-            }
+            },
+            {
+                test: /\.(otf|woff|woff2|eot|ttf)$/,
+                type: "asset/resource"
+            },
         ]
     }
 }

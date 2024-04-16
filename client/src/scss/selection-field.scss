@@ -1,4 +1,8 @@
 // SELECTION FIELD
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+
 // Based on: https://github.com/heyday/silverstripe-colorpalette/blob/main/css/ColorPaletteField.css
 ul.selection-field {
     overflow: hidden;
@@ -37,6 +41,11 @@ ul.selection-field {
                 margin: auto;
                 height: 90%;
                 width: 90%;
+            }
+
+            i {
+                font-size: 30px;
+                margin: auto;
             }
         }
 

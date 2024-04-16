@@ -68,8 +68,10 @@ public function getCMSFields()
 ```
 ![example-alignment.png](resources%2Fexample-alignment.png)
 
-To display Icons you need to reference Feather Icons:
-https://github.com/feathericons/feather/tree/main/icons
+To display Icons you need to reference Font Awesome Icons (Free & Solid):
+[https://fontawesome.com](https://fontawesome.com/search?q=left&o=r&m=free)
+Use the name of the icon without the "fa-" prefix. e.g. "align-left" for "fa-align-left".
+
 
 If no Icon is defined within the array, the box will display the title!
 You can define an alternative box content when you define "Content" within Options. Furthermore you can define an image link:
@@ -109,5 +111,5 @@ Please [create an issue](https://github.com/pixelpoems/silverstripe-selection-fi
 features you're missing.
 
 ## Credits
-Icons from [Feather Icons](https://feathericons.com/) \
+Icons from [Font Awesome](https://fontawesome.com/) \
 Selection Field is based on [Heyday's Color Palette Field](https://github.com/heyday/silverstripe-colorpalette)
