@@ -66,11 +66,11 @@ public function getCMSFields()
     ]);
 }
 ```
-![example-alignment.png](resources%2Fexample-alignment.png)
+![example-alignment-fa.png](resources%2Fexample-alignment-fa.png)
 
 To display Icons you need to reference Font Awesome Icons (Free & Solid):
 [https://fontawesome.com](https://fontawesome.com/search?q=left&o=r&m=free)
-Use the name of the icon without the "fa-" prefix. e.g. "align-left" for "fa-align-left".
+Use the name of the icon without the `fa-` prefix. e.g. `align-left` for `fa-align-left`.
 
 
 If no Icon is defined within the array, the box will display the title!
