@@ -124,7 +124,6 @@ class SelectionField extends SingleSelectField
     public function Field($properties = [])
     {
         Requirements::css('pixelpoems/silverstripe-selection-field:client/dist/css/selection-field.min.css');
-        Requirements::javascript('pixelpoems/silverstripe-selection-field:client/dist/javascript/selection-field.min.js');
 
         $options = [
             // Empty default option
