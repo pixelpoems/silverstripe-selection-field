@@ -64,7 +64,7 @@ class SelectionField extends SingleSelectField
 {
     protected function getFieldOption($value, $title, $odd, $showTitle, $icon = null, $content = null, $imgLink = null)
     {
-        return new ArrayData([
+        return ArrayData::create([
             'ID' => $this->getOptionID($value),
             'Class' => $this->getOptionClass($value, $odd),
             'Role' => 'option',
@@ -115,12 +115,21 @@ class SelectionField extends SingleSelectField
         return $oddClass . $valueClass;
     }
 
+    public function setEmptyString($string)
+    {
+        user_error('SelectionField does not support empty strings - It will always have an empty default', E_USER_WARNING);
+        return $this;
+    }
+
     public function Field($properties = [])
     {
         Requirements::css('pixelpoems/silverstripe-selection-field:client/dist/css/selection-field.min.css');
         Requirements::javascript('pixelpoems/silverstripe-selection-field:client/dist/javascript/selection-field.min.js');
 
-        $options = [];
+        $options = [
+            // Empty default option
+            $this->getFieldOption('', '', false, false, null, null, null),
+        ];
         $odd = false;
 
         // Add all options striped
