@@ -42,8 +42,7 @@
             "dev-main": "1.x-dev"
         },
         "expose": [
-            "client/dist/css",
-            "client/dist/fonts"
+            "client/dist"
         ]
     },
     "license": "BSD-3-Clause"
