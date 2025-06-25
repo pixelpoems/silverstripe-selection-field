@@ -2,12 +2,14 @@
 
 namespace Pixelpoems\SelectionField\CMSFields;
 
+use SilverStripe\Model\ArrayData;
+use Override;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\SingleSelectField;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\View\ArrayData;
 use SilverStripe\View\Requirements;
+use function PHPUnit\Framework\isString;
 
 
 /**
@@ -75,7 +77,7 @@ class SelectionField extends SingleSelectField
             'Icon' => $icon,
             'Content' => $content,
             'ImgLink' => $imgLink,
-            'isChecked' => $this->isSelectedValue($value, $this->Value()),
+            'isChecked' => $this->isSelectedValue($value, $this->getValue()),
             'isDisabled' => $this->isDisabledValue($value)
         ]);
     }
@@ -115,12 +117,14 @@ class SelectionField extends SingleSelectField
         return $oddClass . $valueClass;
     }
 
+    #[Override]
     public function setEmptyString($string)
     {
         user_error('SelectionField does not support empty strings - It will always have an empty default', E_USER_WARNING);
         return $this;
     }
 
+    #[Override]
     public function Field($properties = [])
     {
         Requirements::css('pixelpoems/silverstripe-selection-field:client/dist/css/selection-field.min.css');
@@ -133,6 +137,7 @@ class SelectionField extends SingleSelectField
 
         // Add all options striped
         foreach ($this->getSourceEmpty() as $item) {
+            if(is_string($item)) continue; // Skip if item is a string, as it should be an array - fallback to the default option
             $odd = !$odd;
             $icon = $item['Icon'] ?? null;
             $content = $item['Content'] ?? null;
@@ -141,6 +146,7 @@ class SelectionField extends SingleSelectField
             $options[] = $this->getFieldOption($item['Value'], $item['Title'], $odd, $showTitle, $icon, $content, $imgLink);
         }
 
+
         $properties = array_merge($properties, [
             'Options' => new ArrayList($options)
         ]);
@@ -148,18 +154,7 @@ class SelectionField extends SingleSelectField
         return FormField::Field($properties);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validate($validator)
-    {
-        if (!$this->Value()) {
-            return true;
-        }
-
-        return parent::validate($validator);
-    }
-
+    #[Override]
     public function getAttributes()
     {
         $attributes = array_merge(
@@ -172,6 +167,7 @@ class SelectionField extends SingleSelectField
         return $attributes;
     }
 
+    #[Override]
     public function Type(): string
     {
         return 'field selection-field';

@@ -11,10 +11,10 @@ This module provides a selection field wich is based on [color palate field by h
 
 ## Requirements
 
-* Silverstripe CMS >=4.0
-* Silverstripe Framework >=4.0
-* Versioned Admin >=1.0
-* [Silverstripe Color Palette Field ^2.1](https://github.com/heyday/silverstripe-colorpalette)
+* Silverstripe CMS ^6.0
+* Silverstripe Framework ^6.0
+* [Silverstripe Color Palette Field with CMS6 Support](https://github.com/heyday/silverstripe-colorpalette)
+=> currently we use the fork of https://github.com/silverstripeltd/silverstripe-colorpalette/tree/pulls/cms6-support
 
 ## Installation
 ```
@@ -39,9 +39,9 @@ public function getCMSFields()
     $fields->addFieldsToTab('Root.Main', [
 
         SelectionField::create(
-           $name = 'Alignment',
-           $title = 'Alignment',
-           $source = [
+            $name = 'Alignment',
+            $title = 'Alignment',
+            $source = [
                 'left' => [
                     'Value' => 'left',
                     'Title' => _t('LayoutOptions.Left', "Left"),
@@ -61,9 +61,10 @@ public function getCMSFields()
                     'Icon' => 'align-right'
                 ],
                 $value = 'left'
-        );
-
+        ])
     ]);
+
+    return $fields;
 }
 ```
 ![example-alignment-fa.png](resources%2Fexample-alignment-fa.png)

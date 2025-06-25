@@ -30,6 +30,7 @@ class IconSelectionService
                 $imgMap[$file->ID] = $data;
             }
         }
+
         return $imgMap;
     }
 
